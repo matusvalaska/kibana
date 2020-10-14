@@ -1,17 +1,32 @@
 #!/usr/bin/env bash
 
+tc_escape() {
+  escaped="$1"
+
+  # See https://www.jetbrains.com/help/teamcity/service-messages.html#Escaped+values
+
+  escaped="$(echo "$escaped" | sed -z 's/|/||/g')"
+  escaped="$(echo "$escaped" | sed -z "s/'/|'/g")"
+  escaped="$(echo "$escaped" | sed -z 's/\[/|\[/g')"
+  escaped="$(echo "$escaped" | sed -z 's/\]/|\]/g')"
+  escaped="$(echo "$escaped" | sed -z 's/\n/|n/g')"
+  escaped="$(echo "$escaped" | sed -z 's/\r/|r/g')"
+
+  return "$escaped"
+}
+
 # Sets up an environment variable locally, and also makes it available for subsequent steps in the build
 # NOTE: env vars set up this way will be visible in the UI when logged in. Use tc_set_env_secret for items that need to be hidden
 tc_set_env() {
   export "$1"="$2"
-  echo "##teamcity[setParameter name='env.$1' value='$2']"
+  echo "##teamcity[setParameter name='env.$1' value='$(tc_escape "$2")']"
 }
 
 # Sets up an environment variable locally, and also makes it available for subsequent steps in the build
 # Also hides the value from the UI
 tc_set_env_secret() {
   export "$1"="$2"
-  echo "##teamcity[setParameter name='env.$1' value='$2' display='hidden' password='true']"
+  echo "##teamcity[setParameter name='env.$1' value='$(tc_escape "$2")' display='hidden' password='true']"
 }
 
 verify_no_git_changes() {
