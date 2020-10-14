@@ -26,7 +26,7 @@ tc_set_env FORCE_COLOR 1
 tc_set_env TEST_BROWSER_HEADLESS 1
 
 if [[ "${KIBANA_CI_REPORTER_KEY_BASE64-}" ]]; then
-  tc_set_env_secret KIBANA_CI_REPORTER_KEY "$(echo "$KIBANA_CI_REPORTER_KEY_BASE64" | base64 -d)"
+  tc_set_env KIBANA_CI_REPORTER_KEY "$(echo "$KIBANA_CI_REPORTER_KEY_BASE64" | base64 -d)"
 fi
 
 if is_pr; then
@@ -34,7 +34,7 @@ if is_pr; then
 
   # These can be removed once we're not supporting Jenkins and TeamCity at the same time
   # These are primarily used by github checks reporter and can be configured via /github_checks_api.json
-  tc_set_env ghprbGhRepository "$GITHUB_PR_OWNER/$GITHUB_PR_REPO"
+  tc_set_env ghprbGhRepository "elastic/kibana" # TODO?
   tc_set_env ghprbActualCommit "$GITHUB_PR_TRIGGERED_SHA"
   tc_set_env BUILD_URL "$TEAMCITY_BUILD_URL"
 else

@@ -76,7 +76,9 @@ object KibanaTemplate : Template({
 
     // TODO remove this once we are able to pull it out of vault and put it closer to the things that require it
     password("env.GITHUB_TOKEN", "credentialsJSON:07d22002-12de-4627-91c3-672bdb23b55b", display = ParameterDisplay.HIDDEN)
+    password("env.KIBANA_CI_REPORTER_KEY", "", display = ParameterDisplay.HIDDEN)
     password("env.KIBANA_CI_REPORTER_KEY_BASE64", "credentialsJSON:14d736d9-5001-45d1-8a46-1646fd15d4bb", display = ParameterDisplay.HIDDEN)
+
   }
 
   steps {
