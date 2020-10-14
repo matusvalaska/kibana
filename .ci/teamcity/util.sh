@@ -12,7 +12,7 @@ tc_escape() {
   escaped="$(echo "$escaped" | sed -z 's/\n/|n/g')"
   escaped="$(echo "$escaped" | sed -z 's/\r/|r/g')"
 
-  return "$escaped"
+  echo "$escaped"
 }
 
 # Sets up an environment variable locally, and also makes it available for subsequent steps in the build
