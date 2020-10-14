@@ -25,6 +25,10 @@ tc_set_env NODE_OPTIONS "${NODE_OPTIONS:-} --max-old-space-size=4096"
 tc_set_env FORCE_COLOR 1
 tc_set_env TEST_BROWSER_HEADLESS 1
 
+if [[ "${KIBANA_CI_REPORTER_KEY_BASE64-}" ]]; then
+  tc_set_env_secret KIBANA_CI_REPORTER_KEY "$(echo "$KIBANA_CI_REPORTER_KEY_BASE64" | base64 -d)"
+fi
+
 if is_pr; then
   tc_set_env CHECKS_REPORTER_ACTIVE true
 
