@@ -23,8 +23,9 @@ fun ProjectFeatures.kibanaAgent(init: ProjectFeature.() -> Unit) {
     param("preemptible", "false")
 //    param("sourceProject", "elastic-kibana-184716")
 //    param("sourceImageFamily", "kibana-ci-elastic-dev")
+//    param("sourceImageFamily", "elastic-kibana-ci-ubuntu-1804-lts-nocache")
     param("sourceProject", "elastic-images-prod")
-    param("sourceImageFamily", "elastic-kibana-ci-ubuntu-1804-lts-nocache")
+    param("sourceImageFamily", "elastic-kibana-ci-ubuntu-1804-lts")
     param("zone", "us-central1-a")
     param("profileId", "kibana")
     param("diskType", "pd-ssd")
@@ -115,7 +116,7 @@ fun BuildType.dependsOn(buildType: BuildType, init: SnapshotDependency.() -> Uni
     snapshot(buildType) {
       reuseBuilds = ReuseBuilds.SUCCESSFUL
       onDependencyCancel = FailureAction.CANCEL
-      onDependencyFailure = FailureAction.ADD_PROBLEM
+      onDependencyFailure = FailureAction.FAIL_TO_START
       synchronizeRevisions = true
       init()
     }
