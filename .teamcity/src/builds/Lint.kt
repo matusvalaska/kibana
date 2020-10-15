@@ -1,6 +1,5 @@
 package builds
 
-import addSlackNotifications
 import jetbrains.buildServer.configs.kotlin.v2019_2.BuildType
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 import kibanaAgent

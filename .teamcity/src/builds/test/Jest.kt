@@ -1,11 +1,8 @@
 package builds.test
 
-import addSlackNotifications
-import addTestArtifacts
-import failedTestReporter
+import addTestSettings
 import jetbrains.buildServer.configs.kotlin.v2019_2.BuildType
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
-import junit
 import kibanaAgent
 
 object Jest : BuildType({
@@ -24,13 +21,7 @@ object Jest : BuildType({
                 yarn run grunt run:test_jest
         """.trimIndent()
     }
-
-    failedTestReporter()
   }
 
-  features {
-    junit()
-  }
-
-  addTestArtifacts()
+  addTestSettings()
 })

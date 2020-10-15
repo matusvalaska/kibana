@@ -2,6 +2,7 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.notifications
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.ScriptBuildStep
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
+import jetbrains.buildServer.configs.kotlin.v2019_2.ui.insert
 import projects.kibanaConfiguration
 
 fun BuildFeatures.junit(dirs: String = "target/**/TEST-*.xml") {
@@ -54,8 +55,7 @@ fun BuildType.kibanaAgent(size: Int) {
   kibanaAgent(size.toString())
 }
 
-fun BuildType.addTestArtifacts() {
-  this.artifactRules += "\n" + """
+val testArtifactRules = """
     target/kibana-*
     target/test-metrics/*
     target/kibana-security-solution/**/*.png
@@ -71,6 +71,21 @@ fun BuildType.addTestArtifacts() {
     x-pack/test/functional/failure_debug/html/*.html
     x-pack/test/functional/apps/reporting/reports/session/*.pdf
   """.trimIndent()
+
+fun BuildType.addTestSettings() {
+  artifactRules += "\n" + testArtifactRules
+  steps {
+    script {
+      this@steps.failedTestReporter()
+    }
+  }
+  features {
+    junit()
+  }
+}
+
+fun BuildType.addTestArtifacts() {
+  this.artifactRules += "\n" + testArtifactRules
 }
 
 fun BuildType.addSlackNotifications(to: String = "#kibana-teamcity-testing") {

@@ -1,10 +1,8 @@
 package builds.oss
 
-import addSlackNotifications
 import jetbrains.buildServer.configs.kotlin.v2019_2.BuildType
 import jetbrains.buildServer.configs.kotlin.v2019_2.Dependencies
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
-import kibanaAgent
 
 object OssBuild : BuildType({
   name = "Build OSS"

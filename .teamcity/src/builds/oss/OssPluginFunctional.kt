@@ -1,11 +1,8 @@
 package builds.oss
 
-import addSlackNotifications
-import addTestArtifacts
-import failedTestReporter
+import addTestSettings
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
-import junit
 
 object OssPluginFunctional : BuildType({
   id("OssPluginFunctional")
@@ -34,17 +31,11 @@ object OssPluginFunctional : BuildType({
           ./.ci/teamcity/oss/plugin_functional.sh
         """.trimIndent()
     }
-
-    failedTestReporter()
-  }
-
-  features {
-    junit()
   }
 
   dependencies {
     ossBuild()
   }
 
-  addTestArtifacts()
+  addTestSettings()
 })

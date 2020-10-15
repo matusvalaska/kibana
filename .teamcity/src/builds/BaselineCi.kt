@@ -10,6 +10,7 @@ import dependsOn
 import jetbrains.buildServer.configs.kotlin.v2019_2.BuildType
 import jetbrains.buildServer.configs.kotlin.v2019_2.FailureAction
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
+import templates.KibanaTemplate
 
 object BaselineCi : BuildType({
   id("Baseline_CI")
@@ -17,6 +18,8 @@ object BaselineCi : BuildType({
   description = "Runs builds, saved object field metrics for every commit"
   type = Type.COMPOSITE
   paused = true
+
+  templates(KibanaTemplate)
 
   triggers {
     vcs {

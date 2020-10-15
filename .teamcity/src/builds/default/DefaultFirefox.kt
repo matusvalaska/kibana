@@ -1,12 +1,8 @@
 package builds.default
 
-import addSlackNotifications
-import addTestArtifacts
-import failedTestReporter
+import addTestSettings
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
-import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.notifications
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
-import junit
 
 object DefaultFirefox : BuildType({
   id("DefaultFirefox")
@@ -41,17 +37,11 @@ object DefaultFirefox : BuildType({
                 ./.ci/teamcity/default/firefox.sh
         """.trimIndent()
     }
-
-    failedTestReporter()
-  }
-
-  features {
-    junit()
   }
 
   dependencies {
     defaultBuild()
   }
 
-  addTestArtifacts()
+  addTestSettings()
 })

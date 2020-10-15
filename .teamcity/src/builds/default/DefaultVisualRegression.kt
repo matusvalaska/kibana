@@ -1,11 +1,8 @@
 package builds.default
 
-import addSlackNotifications
-import addTestArtifacts
-import failedTestReporter
+import addTestSettings
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
-import junit
 
 object DefaultVisualRegression : BuildType({
   id("DefaultVisualRegression")
@@ -36,17 +33,11 @@ object DefaultVisualRegression : BuildType({
           ./.ci/teamcity/default/saved_object_field_metrics.sh
         """.trimIndent()
     }
-
-    failedTestReporter()
-  }
-
-  features {
-    junit()
   }
 
   dependencies {
     defaultBuild()
   }
 
-  addTestArtifacts()
+  addTestSettings()
 })
