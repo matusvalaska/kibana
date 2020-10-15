@@ -13,7 +13,7 @@ object XPackJest : BuildType({
   paused = true
   description = "Executes X-Pack Jest Unit Tests"
 
-  kibanaAgent(8)
+  kibanaAgent(16)
 
   steps {
     script {
