@@ -7,7 +7,6 @@ import kibanaAgent
 
 object XPackJest : BuildType({
   name = "X-Pack Jest Unit"
-  paused = true
   description = "Executes X-Pack Jest Unit Tests"
 
   kibanaAgent(16)

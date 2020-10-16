@@ -7,7 +7,6 @@ import kibanaAgent
 
 object Jest : BuildType({
   name = "Jest Unit"
-  paused = true
   description = "Executes Jest Unit Tests"
 
   kibanaAgent(8)

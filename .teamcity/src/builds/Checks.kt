@@ -1,13 +1,11 @@
 package builds
 
-import addTestSettings
 import jetbrains.buildServer.configs.kotlin.v2019_2.BuildType
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 import kibanaAgent
 
 object Checks : BuildType({
   name = "Checks"
-  paused = true
   description = "Executes Various Checks"
 
   kibanaAgent(4)

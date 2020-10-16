@@ -6,7 +6,6 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 class OssCiGroup(val ciGroup: Int, init: BuildType.() -> Unit = {}) : OssFunctionalBase({
   id("OssCiGroup_$ciGroup")
   name = "CI Group $ciGroup"
-  paused = true
 
   steps {
     script {

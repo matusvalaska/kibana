@@ -1,13 +1,11 @@
 package builds.default
 
-import addTestSettings
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 
 object DefaultVisualRegression : DefaultFunctionalBase({
   id("DefaultVisualRegression")
   name = "Visual Regression"
-  paused = true
 
   params {
     password("env.PERCY_TOKEN", "credentialsJSON:a1e37d40-830c-4ab6-a047-226688d2d81a", display = ParameterDisplay.HIDDEN)

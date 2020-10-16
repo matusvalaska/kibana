@@ -1,12 +1,10 @@
 package builds
 
-import addSlackNotifications
 import builds.default.*
 import builds.oss.*
 import builds.test.AllTests
 import dependsOn
 import jetbrains.buildServer.configs.kotlin.v2019_2.BuildType
-import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.schedule
 
 object FullCi : BuildType({
   id("Full_CI")

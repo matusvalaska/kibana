@@ -7,7 +7,6 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 
 object DefaultBuild : BuildType({
   name = "Build Default"
-  paused = true
   description = "Generates Default Build Distribution artifact"
 
   artifactRules = """

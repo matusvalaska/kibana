@@ -5,7 +5,6 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 object OssFirefox : OssFunctionalBase({
   id("OssFirefox")
   name = "Firefox"
-  paused = true
 
   steps {
     script {

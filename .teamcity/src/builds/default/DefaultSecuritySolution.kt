@@ -5,7 +5,6 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 object DefaultSecuritySolution : DefaultFunctionalBase({
   id("DefaultSecuritySolution")
   name = "Security Solution"
-  paused = true
 
   steps {
     script {

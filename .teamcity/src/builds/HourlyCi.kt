@@ -11,7 +11,6 @@ object HourlyCi : BuildType({
   name = "Hourly CI"
   description = "Runs everything in CI, hourly"
   type = Type.COMPOSITE
-  paused = false
 
   triggers {
     schedule {

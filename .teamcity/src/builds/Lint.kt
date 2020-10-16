@@ -6,7 +6,6 @@ import kibanaAgent
 
 object Lint : BuildType({
   name = "Lint"
-  paused = true
   description = "Executes Linting, such as eslint and sasslint"
 
   kibanaAgent(2)

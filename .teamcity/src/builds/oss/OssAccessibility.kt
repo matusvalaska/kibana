@@ -5,7 +5,6 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 object OssAccessibility : OssFunctionalBase({
   id("OssAccessibility")
   name = "Accessibility"
-  paused = true
 
   steps {
     script {

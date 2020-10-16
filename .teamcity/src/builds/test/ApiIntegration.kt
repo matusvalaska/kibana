@@ -6,7 +6,6 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 
 object ApiIntegration : BuildType({
   name = "API Integration"
-  paused = true
   description = "Executes API Integration Tests"
 
   steps {

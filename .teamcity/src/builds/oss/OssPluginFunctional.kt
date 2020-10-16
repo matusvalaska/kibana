@@ -5,7 +5,6 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 object OssPluginFunctional : OssFunctionalBase({
   id("OssPluginFunctional")
   name = "Plugin Functional"
-  paused = true
 
   steps {
     script {

@@ -6,7 +6,6 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 object DefaultSavedObjectFieldMetrics : BuildType({
   id("DefaultSavedObjectFieldMetrics")
   name = "Default Saved Object Field Metrics"
-  paused = true
 
   params {
     param("env.KBN_NP_PLUGINS_BUILT", "true")

@@ -7,7 +7,6 @@ import kibanaAgent
 
 object QuickTests : BuildType({
   name = "Quick Tests"
-  paused = true
   description = "Executes Quick Tests"
 
   kibanaAgent(2)

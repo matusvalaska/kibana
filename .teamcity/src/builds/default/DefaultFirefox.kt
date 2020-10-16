@@ -5,7 +5,6 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 object DefaultFirefox : DefaultFunctionalBase({
   id("DefaultFirefox")
   name = "Firefox"
-  paused = true
 
   steps {
     script {
