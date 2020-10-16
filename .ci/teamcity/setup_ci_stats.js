@@ -6,7 +6,7 @@ const ciStats = require('./ci_stats');
       jenkinsJobName: process.env.TEAMCITY_BUILDCONF_NAME,
       jenkinsJobId: process.env.TEAMCITY_BUILD_ID,
       jenkinsUrl: process.env.TEAMCITY_BUILD_URL,
-      prId: null, // TODO once we have PR support
+      prId: process.env.GITHUB_PR_NUMBER || null,
     });
 
     const config = {
@@ -23,8 +23,8 @@ const ciStats = require('./ci_stats');
     await ciStats.post(`/v1/git_info?buildId=${build.id}`, {
       branch: process.env.GIT_BRANCH.replace(/^(refs\/heads\/|origin\/)/, ''),
       commit: process.env.GIT_COMMIT,
-      targetBranch: null, // TODO once we have PR support
-      mergeBase: null, // TODO once we have PR support
+      targetBranch: process.env.GITHUB_PR_TARGET_BRANCH || null,
+      mergeBase: null, // TODO
     });
   } catch (ex) {
     console.error(ex);
