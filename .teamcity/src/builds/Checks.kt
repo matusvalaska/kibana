@@ -36,6 +36,4 @@ object Checks : BuildType({
       }
     }
   }
-
-  addTestSettings()
 })
