@@ -54,7 +54,7 @@ object KibanaTemplate : Template({
     password("env.KIBANA_CI_STATS_CONFIG", "", display = ParameterDisplay.HIDDEN)
 //    password("env.CI_STATS_TOKEN", "credentialsJSON:ea975068-ca68-4da5-8189-ce90f4286bc0", display = ParameterDisplay.HIDDEN)
 //    password("env.CI_STATS_HOST", "credentialsJSON:933ba93e-4b06-44c1-8724-8c536651f2b6", display = ParameterDisplay.HIDDEN)
-    password("env.CI_STATS_TOKEN", "%vault:kibana-issues:secret/kibana-issues/dev/kibana_ci_stats!/api_token", display = ParameterDisplay.HIDDEN)
+    password("env.CI_STATS_TOKEN", "%vault:kibana-issues:secret/kibana-issues/dev/kibana_ci_stats!/api_token%", display = ParameterDisplay.HIDDEN)
     password("env.CI_STATS_HOST", "%vault:kibana-issues:secret/kibana-issues/dev/kibana_ci_stats!/api_host%", display = ParameterDisplay.HIDDEN)
 
     // TODO remove this once we are able to pull it out of vault and put it closer to the things that require it
