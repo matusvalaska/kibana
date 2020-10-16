@@ -1,17 +1,12 @@
 package builds.default
 
-import addTestSettings
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 
-class DefaultCiGroup(val ciGroup: Int = 0, init: BuildType.() -> Unit = {}) : BuildType({
+class DefaultCiGroup(val ciGroup: Int = 0, init: BuildType.() -> Unit = {}) : DefaultFunctionalBase({
   id("DefaultCiGroup_$ciGroup")
   name = "CI Group $ciGroup"
   paused = true
-
-  params {
-    param("env.KBN_NP_PLUGINS_BUILT", "true")
-  }
 
   steps {
     script {
@@ -23,12 +18,6 @@ class DefaultCiGroup(val ciGroup: Int = 0, init: BuildType.() -> Unit = {}) : Bu
         """.trimIndent()
     }
   }
-
-  dependencies {
-    defaultBuildWithPlugins()
-  }
-
-  addTestSettings()
 
   init()
 })
