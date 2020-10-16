@@ -113,8 +113,8 @@ fun BuildType.dependsOn(buildType: BuildType, init: SnapshotDependency.() -> Uni
   dependencies {
     snapshot(buildType) {
       reuseBuilds = ReuseBuilds.SUCCESSFUL
-      onDependencyCancel = FailureAction.CANCEL
-      onDependencyFailure = FailureAction.FAIL_TO_START
+      onDependencyCancel = FailureAction.ADD_PROBLEM
+      onDependencyFailure = FailureAction.ADD_PROBLEM
       synchronizeRevisions = true
       init()
     }

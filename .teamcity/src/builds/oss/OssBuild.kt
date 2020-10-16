@@ -2,6 +2,7 @@ package builds.oss
 
 import jetbrains.buildServer.configs.kotlin.v2019_2.BuildType
 import jetbrains.buildServer.configs.kotlin.v2019_2.Dependencies
+import jetbrains.buildServer.configs.kotlin.v2019_2.FailureAction
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 
 object OssBuild : BuildType({
@@ -30,6 +31,8 @@ object OssBuild : BuildType({
 fun Dependencies.ossBuild(rules: String = "+:kibana-oss.tar.gz!** => ../build/kibana-build-oss") {
   dependency(OssBuild) {
     snapshot {
+      onDependencyFailure = FailureAction.FAIL_TO_START
+      onDependencyCancel = FailureAction.FAIL_TO_START
     }
 
     artifacts {

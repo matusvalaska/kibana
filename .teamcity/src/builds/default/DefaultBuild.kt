@@ -2,6 +2,7 @@ package builds.default
 
 import jetbrains.buildServer.configs.kotlin.v2019_2.BuildType
 import jetbrains.buildServer.configs.kotlin.v2019_2.Dependencies
+import jetbrains.buildServer.configs.kotlin.v2019_2.FailureAction
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 
 object DefaultBuild : BuildType({
@@ -38,6 +39,8 @@ object DefaultBuild : BuildType({
 fun Dependencies.defaultBuild(rules: String = "+:kibana-default.tar.gz!** => ../build/kibana-build-default") {
   dependency(DefaultBuild) {
     snapshot {
+      onDependencyFailure = FailureAction.FAIL_TO_START
+      onDependencyCancel = FailureAction.FAIL_TO_START
     }
 
     artifacts {
