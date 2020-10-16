@@ -1,17 +1,11 @@
 package builds.oss
 
-import addTestSettings
-import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 
-object OssPluginFunctional : BuildType({
+object OssPluginFunctional : OssFunctionalBase({
   id("OssPluginFunctional")
   name = "Plugin Functional"
   paused = true
-
-  params {
-    param("env.KBN_NP_PLUGINS_BUILT", "true")
-  }
 
   steps {
     script {
@@ -36,6 +30,4 @@ object OssPluginFunctional : BuildType({
   dependencies {
     ossBuild()
   }
-
-  addTestSettings()
 })

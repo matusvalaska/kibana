@@ -1,17 +1,11 @@
 package builds.oss
 
-import addTestSettings
-import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 
-object OssAccessibility : BuildType({
+object OssAccessibility : OssFunctionalBase({
   id("OssAccessibility")
   name = "Accessibility"
   paused = true
-
-  params {
-    param("env.KBN_NP_PLUGINS_BUILT", "true")
-  }
 
   steps {
     script {
@@ -23,10 +17,4 @@ object OssAccessibility : BuildType({
         """.trimIndent()
     }
   }
-
-  dependencies {
-    ossBuild()
-  }
-
-  addTestSettings()
 })
